@@ -1,0 +1,50 @@
+type User {
+  id: ID! @id
+  name: String!
+  email: String! 
+  password: String!
+}
+
+type Comment {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  text: String!
+  writtenBy: User!
+}
+
+type Diskusi {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  judul: String!
+  isi: String!
+  writtenBy: User!
+}
+
+type Lomba {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  lomba: String!
+  ketlomba: String!
+}
+
+type File {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  file: String!
+  writtenBy: User!
+}
+
+type Post {
+  id: ID! @id
+  title: String!
+  content: String!
+  published: Boolean!
+}
+
+type AuthPayload {
+    id: ID! @id
+    token: String 
+    user: User
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
+}
