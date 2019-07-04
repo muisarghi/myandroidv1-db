@@ -1,6 +1,7 @@
 //const { ApolloServer, gql } = require('apollo-server');
 const { GraphQLServer } = require('graphql-yoga')
-const { prisma } = require('./database/generated/prisma-client');
+//const { prisma } = require('./database/generated/prisma-client');
+const { Prisma } = require('./database/node_modules/prisma-binding')
 const { importSchema } = require('./node_modules/graphql-import')
 const { makeExecutableSchema } = require('./node_modules/graphql-tools');
 const Query = require('./src/resolvers/Query')
@@ -20,6 +21,22 @@ const resolvers = {
 //});
 
 const server = new GraphQLServer({
+  typeDefs: './src/schema_.graphql',
+  resolvers,
+  context: req => ({
+    ...req,
+    db: new Prisma({
+      typeDefs: 'src/generated/prisma.graphql', // the generated Prisma DB schema
+      endpoint: 'https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird',          // the endpoint of the Prisma DB service
+      secret: '',                    // specified in database/prisma.yml
+      debug: true,                              // log all GraphQL queries & mutations
+    }),
+  }),
+})
+
+
+/*
+const server = new GraphQLServer({
     typeDefs: './src/schema_.graphql',
     resolvers,
     context: request => {
@@ -29,6 +46,7 @@ const server = new GraphQLServer({
         }
     },
 })
+*/
 /*
 module.exports = {
     schema,

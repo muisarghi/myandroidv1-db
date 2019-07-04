@@ -1,22 +1,25 @@
 {
   "name": "lovebird",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "My Graphcool Service",
   "dependencies": {
-    "git-install": "^0.5.2",
     "graphql-yoga": "^1.18.0",
-    "npm-git-install": "^0.3.0"
+    "prisma-binding": "^2.3.15"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "main": "server.js",
+  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://git.heroku.com/lovebird-komunitas.git"
+    "url": "git+https://github.com/muisarghi/myandroidv1-db.git"
   },
-  "description": ""
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muisarghi/myandroidv1-db/issues"
+  },
+  "homepage": "https://github.com/muisarghi/myandroidv1-db#readme"
 }

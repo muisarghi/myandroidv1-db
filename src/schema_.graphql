@@ -35,7 +35,7 @@ type User {
 }
 
 type Query {
-	getAllLomba : [Lomba]
+	getAllLomba : [Lomba!]!
 	getAllDiskusi : [Diskusi]
 	getAllComment : [Comment]
 	getAllFile : [File]

@@ -1,7 +1,8 @@
 
 
 function getAllLomba(parent, args, context, info) {
-    return context.prisma.lombas()
+    //return context.prisma.lombas()
+	return context.db.query.lombas({ }, info)
 }
 
 function getAllComment(parent, args, context, info) {
