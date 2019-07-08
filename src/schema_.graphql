@@ -53,7 +53,7 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
 	createComment(text: String!): Comment
-	createLomba(lomba: String, ketlomba: String): Lomba
+	createLomba(lomba: String, ketlomba: String): Lomba!
 	createDiskusi(judul: String!, isi: String!): Diskusi
 	createFile(file: String!): File
   

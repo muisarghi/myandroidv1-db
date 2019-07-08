@@ -46,15 +46,31 @@ async function createComment(parent, args, context, info) {
     })
 }
 
+/*
+async function createLomba (context, { lomba, ketlomba }) {
+      return context.prisma.createLomba({
+        lomba,
+        ketlomba,
+      })
+		}
+		*/
+		
 async function createLomba(parent, args, context, info) {
     //const userId = getUserId(context)
 	//return context.db.query.lombas({ }, info)
-    //return context.prisma.createLomba({
-	return context.db.mutation.createLomba({
-        lomba: args.lomba,
-		ketlomba: args.ketlomba,
-    })
+	
+    //return context.db.mutation.createLomba(
+	//{lomba: args.lomba,
+		//ketlomba: args.ketlomba }, info)
+		
+	return context.db.mutation.createLomba({data:{
+    lomba: args.lomba,
+	ketlomba: args.ketlomba,
+    }}, info)
 }
+
+
+
 
 async function createDiskusi(parent, args, context, info) {
     const userId = getUserId(context)
