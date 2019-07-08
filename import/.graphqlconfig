@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "lovebird": {
+      "schemaPath": "schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "default": "https://lovebird-komunitas.herokuapp.com/"
+        }
+      }
+    }
+  }
+}

@@ -50,7 +50,6 @@ async function createLomba(parent, args, context, info) {
     const userId = getUserId(context)
 
     return context.prisma.createLomba({
-        createdAt: args.timeStamp,
         lomba: args.lomba,
 		ketlomba: args.ketlomba,
     })

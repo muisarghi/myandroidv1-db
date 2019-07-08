@@ -1,0 +1,60 @@
+# source: https://lovebird-komunitas.herokuapp.com/
+# timestamp: Thu Jul 04 2019 11:36:16 GMT+0700 (Indochina Time)
+
+type AuthPayload {
+  id: ID!
+  token: String
+  user: User
+}
+
+type Comment {
+  id: ID!
+  createdAt: String!
+  text: String!
+  writtenBy: User!
+}
+
+type Diskusi {
+  id: ID!
+  createdAt: String!
+  judul: String!
+  isi: String!
+  writtenBy: User!
+}
+
+type File {
+  id: ID!
+  createdAt: String!
+  file: String!
+  writtenBy: User!
+}
+
+type Lomba {
+  id: ID
+  createdAt: String
+  lomba: String
+  ketlomba: String
+}
+
+type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  createComment(text: String!): Comment
+  createLomba(lomba: String!, ketlomba: String!): Lomba
+  createDiskusi(judul: String!, isi: String!): Diskusi
+  createFile(file: String!): File
+}
+
+type Query {
+  getAllLomba: [Lomba!]!
+  getAllDiskusi: [Diskusi]
+  getAllComment: [Comment]
+  getAllFile: [File]
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  accessRole: String
+}
