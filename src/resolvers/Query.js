@@ -10,7 +10,8 @@ function getAllComment(parent, args, context, info) {
 }
 
 function getAllDiskusi(parent, args, context, info) {
-    return context.prisma.diskusis()
+    //return context.prisma.diskusis()
+	return context.db.query.diskusis({ }, info)
 }
 
 function getAllFile(parent, args, context, info) {

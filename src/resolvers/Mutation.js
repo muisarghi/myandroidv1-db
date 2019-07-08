@@ -73,7 +73,8 @@ async function createLomba(parent, args, context, info) {
 
 
 async function createDiskusi(parent, args, context, info) {
-    const userId = getUserId(context)
+    /*
+	const userId = getUserId(context)
 
     return context.prisma.createDiskusi({
         createdAt: args.timeStamp,
@@ -81,6 +82,11 @@ async function createDiskusi(parent, args, context, info) {
 		isi: args.isi,
 		writtenBy: { connect: { id: userId } },
     })
+	*/
+	return context.db.mutation.createDiskusi({data:{
+    judul: args.judul,
+	isi: args.isi,
+    }}, info)
 }
 
 
