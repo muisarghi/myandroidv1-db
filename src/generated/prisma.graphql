@@ -489,7 +489,6 @@ type Diskusi implements Node {
   createdAt: DateTime!
   judul: String!
   isi: String!
-  writtenBy: User!
 }
 
 """A connection to a list of items."""
@@ -506,7 +505,6 @@ input DiskusiCreateInput {
   id: ID
   judul: String!
   isi: String!
-  writtenBy: UserCreateOneInput!
 }
 
 """An edge in a connection."""
