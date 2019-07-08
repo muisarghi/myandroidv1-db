@@ -420,7 +420,6 @@ export interface AuthPayloadCreateInput {
 export interface DiskusiUpdateInput {
   judul?: Maybe<String>;
   isi?: Maybe<String>;
-  writtenBy?: Maybe<UserUpdateOneRequiredInput>;
 }
 
 export type AuthPayloadWhereUniqueInput = AtLeastOne<{
@@ -431,7 +430,6 @@ export interface DiskusiCreateInput {
   id?: Maybe<ID_Input>;
   judul: String;
   isi: String;
-  writtenBy: UserCreateOneInput;
 }
 
 export interface CommentSubscriptionWhereInput {
@@ -1016,7 +1014,6 @@ export interface DiskusiWhereInput {
   isi_not_starts_with?: Maybe<String>;
   isi_ends_with?: Maybe<String>;
   isi_not_ends_with?: Maybe<String>;
-  writtenBy?: Maybe<UserWhereInput>;
   AND?: Maybe<DiskusiWhereInput[] | DiskusiWhereInput>;
   OR?: Maybe<DiskusiWhereInput[] | DiskusiWhereInput>;
   NOT?: Maybe<DiskusiWhereInput[] | DiskusiWhereInput>;
@@ -1804,7 +1801,6 @@ export interface DiskusiPromise extends Promise<Diskusi>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   judul: () => Promise<String>;
   isi: () => Promise<String>;
-  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface DiskusiSubscription
@@ -1814,7 +1810,6 @@ export interface DiskusiSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   judul: () => Promise<AsyncIterator<String>>;
   isi: () => Promise<AsyncIterator<String>>;
-  writtenBy: <T = UserSubscription>() => T;
 }
 
 export interface DiskusiNullablePromise
@@ -1824,7 +1819,6 @@ export interface DiskusiNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   judul: () => Promise<String>;
   isi: () => Promise<String>;
-  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface UserSubscriptionPayload {

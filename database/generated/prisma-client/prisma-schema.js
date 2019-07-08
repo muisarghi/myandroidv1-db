@@ -280,7 +280,6 @@ type Diskusi {
   createdAt: DateTime!
   judul: String!
   isi: String!
-  writtenBy: User!
 }
 
 type DiskusiConnection {
@@ -293,7 +292,6 @@ input DiskusiCreateInput {
   id: ID
   judul: String!
   isi: String!
-  writtenBy: UserCreateOneInput!
 }
 
 type DiskusiEdge {
@@ -340,7 +338,6 @@ input DiskusiSubscriptionWhereInput {
 input DiskusiUpdateInput {
   judul: String
   isi: String
-  writtenBy: UserUpdateOneRequiredInput
 }
 
 input DiskusiUpdateManyMutationInput {
@@ -399,7 +396,6 @@ input DiskusiWhereInput {
   isi_not_starts_with: String
   isi_ends_with: String
   isi_not_ends_with: String
-  writtenBy: UserWhereInput
   AND: [DiskusiWhereInput!]
   OR: [DiskusiWhereInput!]
   NOT: [DiskusiWhereInput!]

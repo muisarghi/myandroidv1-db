@@ -36,6 +36,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://eu1.prisma.sh/warnet-ict/lovebird/lovebird`
+  endpoint: `https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird`
 });
 exports.prisma = new exports.Prisma();

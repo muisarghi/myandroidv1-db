@@ -54,7 +54,7 @@ type Mutation {
     login(email: String!, password: String!): AuthPayload
 	createComment(text: String!): Comment
 	createLomba(lomba: String, ketlomba: String): Lomba!
-	createDiskusi(judul: String!, isi: String!): Diskusi
+	createDiskusi(judul: String!, isi: String!): Diskusi!
 	createFile(file: String!): File
   
 }
