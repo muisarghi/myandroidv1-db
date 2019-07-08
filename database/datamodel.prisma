@@ -17,7 +17,6 @@ type Diskusi {
   createdAt: DateTime! @createdAt
   judul: String!
   isi: String!
-  writtenBy: User!
 }
 
 type Lomba {
