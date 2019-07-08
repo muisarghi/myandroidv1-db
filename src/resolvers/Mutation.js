@@ -47,7 +47,7 @@ async function createComment(parent, args, context, info) {
 }
 
 async function createLomba(parent, args, context, info) {
-    const userId = getUserId(context)
+    //const userId = getUserId(context)
 	//return context.db.query.lombas({ }, info)
     //return context.prisma.createLomba({
 	return context.db.mutation.createLomba({
