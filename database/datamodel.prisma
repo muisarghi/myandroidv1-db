@@ -19,6 +19,13 @@ type Diskusi {
   isi: String!
 }
 
+type Berita {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  headline: String!
+  berita: String!
+}
+
 type Lomba {
   id: ID! @id
   createdAt: DateTime! @createdAt

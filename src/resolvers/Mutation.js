@@ -90,10 +90,19 @@ async function createDiskusi(parent, args, context, info) {
 }
 
 
+async function createBerita(parent, args, context, info) {
+   
+	return context.db.mutation.createBerita({data:{
+    headline: args.headline,
+	berita: args.berita,
+    }}, info)
+}
+
 module.exports = {
     signup,
     login,
 	createComment,
 	createLomba,
-	createDiskusi
+	createDiskusi,
+	createBerita
 }

@@ -1,60 +1,68 @@
-type Lomba {
-  id: ID
-  createdAt: String 
-  lomba: String
-  ketlomba: String
+# source: https://lovebird-komunitas.herokuapp.com/
+# timestamp: Tue Jul 09 2019 08:33:46 GMT+0700 (Indochina Time)
+
+type AuthPayload {
+  id: ID!
+  token: String
+  user: User
 }
 
 type Comment {
-  id: ID! 
-  createdAt: String! 
+  id: ID!
+  createdAt: String!
   text: String!
   writtenBy: User!
 }
 
 type Diskusi {
-  id: ID! 
-  createdAt: String! 
+  id: ID!
+  createdAt: String!
   judul: String!
   isi: String!
-  writtenBy: User!
+}
+
+type Berita {
+  id: ID!
+  createdAt: String!
+  headline: String!
+  berita: String!
 }
 
 type File {
   id: ID!
-  createdAt: String! 
+  createdAt: String!
   file: String!
   writtenBy: User!
 }
 
-type User {
-  id: ID! 
-  name: String!
-  email: String! 
-  accessRole: String
-}
-
-type Query {
-	getAllLomba : [Lomba!]!
-	getAllDiskusi : [Diskusi]
-	getAllComment : [Comment]
-	getAllFile : [File]
-  
-}
-
-type AuthPayload {
-    id: ID!
-    token: String
-    user: User
+type Lomba {
+  id: ID
+  createdAt: String
+  lomba: String
+  ketlomba: String
 }
 
 type Mutation {
-  
-	signup(email: String!, password: String!, name: String!): AuthPayload
-    login(email: String!, password: String!): AuthPayload
-	createComment(text: String!): Comment
-	createLomba(lomba: String, ketlomba: String): Lomba!
-	createDiskusi(judul: String!, isi: String!): Diskusi!
-	createFile(file: String!): File
-  
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  createComment(text: String!): Comment
+  createLomba(lomba: String, ketlomba: String): Lomba!
+  createDiskusi(judul: String!, isi: String!): Diskusi!
+  createBerita(headline: String!, berita: String!): Berita!
+  createFile(file: String!): File
+}
+
+type Query {
+  getAllLomba: [Lomba!]!
+  getAllBerita: [Berita!]!
+  getAllDiskusi: [Diskusi]
+  getAllComment: [Comment]
+  getAllFile: [File]
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  accessRole: String
 }

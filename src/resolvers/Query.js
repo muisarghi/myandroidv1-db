@@ -14,6 +14,11 @@ function getAllDiskusi(parent, args, context, info) {
 	return context.db.query.diskusis({ }, info)
 }
 
+function getAllBerita(parent, args, context, info) {
+    //return context.prisma.diskusis()
+	return context.db.query.beritas({ }, info)
+}
+
 function getAllFile(parent, args, context, info) {
     return context.prisma.files()
 }
@@ -21,6 +26,7 @@ function getAllFile(parent, args, context, info) {
 module.exports = {
     getAllLomba,
     getAllComment,
+	getAllBerita,
     getAllDiskusi,
     getAllFile
 }

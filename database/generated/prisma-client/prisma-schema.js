@@ -7,6 +7,10 @@ module.exports = {
   count: Int!
 }
 
+type AggregateBerita {
+  count: Int!
+}
+
 type AggregateComment {
   count: Int!
 }
@@ -158,6 +162,136 @@ input AuthPayloadWhereUniqueInput {
 
 type BatchPayload {
   count: Long!
+}
+
+type Berita {
+  id: ID!
+  createdAt: DateTime!
+  headline: String!
+  berita: String!
+}
+
+type BeritaConnection {
+  pageInfo: PageInfo!
+  edges: [BeritaEdge]!
+  aggregate: AggregateBerita!
+}
+
+input BeritaCreateInput {
+  id: ID
+  headline: String!
+  berita: String!
+}
+
+type BeritaEdge {
+  node: Berita!
+  cursor: String!
+}
+
+enum BeritaOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  headline_ASC
+  headline_DESC
+  berita_ASC
+  berita_DESC
+}
+
+type BeritaPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  headline: String!
+  berita: String!
+}
+
+type BeritaSubscriptionPayload {
+  mutation: MutationType!
+  node: Berita
+  updatedFields: [String!]
+  previousValues: BeritaPreviousValues
+}
+
+input BeritaSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BeritaWhereInput
+  AND: [BeritaSubscriptionWhereInput!]
+  OR: [BeritaSubscriptionWhereInput!]
+  NOT: [BeritaSubscriptionWhereInput!]
+}
+
+input BeritaUpdateInput {
+  headline: String
+  berita: String
+}
+
+input BeritaUpdateManyMutationInput {
+  headline: String
+  berita: String
+}
+
+input BeritaWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  headline: String
+  headline_not: String
+  headline_in: [String!]
+  headline_not_in: [String!]
+  headline_lt: String
+  headline_lte: String
+  headline_gt: String
+  headline_gte: String
+  headline_contains: String
+  headline_not_contains: String
+  headline_starts_with: String
+  headline_not_starts_with: String
+  headline_ends_with: String
+  headline_not_ends_with: String
+  berita: String
+  berita_not: String
+  berita_in: [String!]
+  berita_not_in: [String!]
+  berita_lt: String
+  berita_lte: String
+  berita_gt: String
+  berita_gte: String
+  berita_contains: String
+  berita_not_contains: String
+  berita_starts_with: String
+  berita_not_starts_with: String
+  berita_ends_with: String
+  berita_not_ends_with: String
+  AND: [BeritaWhereInput!]
+  OR: [BeritaWhereInput!]
+  NOT: [BeritaWhereInput!]
+}
+
+input BeritaWhereUniqueInput {
+  id: ID
 }
 
 type Comment {
@@ -657,6 +791,12 @@ type Mutation {
   upsertAuthPayload(where: AuthPayloadWhereUniqueInput!, create: AuthPayloadCreateInput!, update: AuthPayloadUpdateInput!): AuthPayload!
   deleteAuthPayload(where: AuthPayloadWhereUniqueInput!): AuthPayload
   deleteManyAuthPayloads(where: AuthPayloadWhereInput): BatchPayload!
+  createBerita(data: BeritaCreateInput!): Berita!
+  updateBerita(data: BeritaUpdateInput!, where: BeritaWhereUniqueInput!): Berita
+  updateManyBeritas(data: BeritaUpdateManyMutationInput!, where: BeritaWhereInput): BatchPayload!
+  upsertBerita(where: BeritaWhereUniqueInput!, create: BeritaCreateInput!, update: BeritaUpdateInput!): Berita!
+  deleteBerita(where: BeritaWhereUniqueInput!): Berita
+  deleteManyBeritas(where: BeritaWhereInput): BatchPayload!
   createComment(data: CommentCreateInput!): Comment!
   updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
   updateManyComments(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
@@ -843,6 +983,9 @@ type Query {
   authPayload(where: AuthPayloadWhereUniqueInput!): AuthPayload
   authPayloads(where: AuthPayloadWhereInput, orderBy: AuthPayloadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AuthPayload]!
   authPayloadsConnection(where: AuthPayloadWhereInput, orderBy: AuthPayloadOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AuthPayloadConnection!
+  berita(where: BeritaWhereUniqueInput!): Berita
+  beritas(where: BeritaWhereInput, orderBy: BeritaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Berita]!
+  beritasConnection(where: BeritaWhereInput, orderBy: BeritaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeritaConnection!
   comment(where: CommentWhereUniqueInput!): Comment
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment]!
   commentsConnection(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommentConnection!
@@ -866,6 +1009,7 @@ type Query {
 
 type Subscription {
   authPayload(where: AuthPayloadSubscriptionWhereInput): AuthPayloadSubscriptionPayload
+  berita(where: BeritaSubscriptionWhereInput): BeritaSubscriptionPayload
   comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
   diskusi(where: DiskusiSubscriptionWhereInput): DiskusiSubscriptionPayload
   file(where: FileSubscriptionWhereInput): FileSubscriptionPayload

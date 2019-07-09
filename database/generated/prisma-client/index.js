@@ -17,6 +17,10 @@ var models = [
     embedded: false
   },
   {
+    name: "Berita",
+    embedded: false
+  },
+  {
     name: "Lomba",
     embedded: false
   },

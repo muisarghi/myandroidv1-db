@@ -1,7 +1,11 @@
 # source: https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird
-# timestamp: Wed Jul 03 2019 11:36:54 GMT+0700 (Indochina Time)
+# timestamp: Tue Jul 09 2019 08:33:34 GMT+0700 (Indochina Time)
 
 type AggregateAuthPayload {
+  count: Int!
+}
+
+type AggregateBerita {
   count: Int!
 }
 
@@ -269,6 +273,260 @@ input AuthPayloadWhereUniqueInput {
 type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
+}
+
+type Berita implements Node {
+  id: ID!
+  createdAt: DateTime!
+  headline: String!
+  berita: String!
+}
+
+"""A connection to a list of items."""
+type BeritaConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeritaEdge]!
+  aggregate: AggregateBerita!
+}
+
+input BeritaCreateInput {
+  id: ID
+  headline: String!
+  berita: String!
+}
+
+"""An edge in a connection."""
+type BeritaEdge {
+  """The item at the end of the edge."""
+  node: Berita!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeritaOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  headline_ASC
+  headline_DESC
+  berita_ASC
+  berita_DESC
+}
+
+type BeritaPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  headline: String!
+  berita: String!
+}
+
+type BeritaSubscriptionPayload {
+  mutation: MutationType!
+  node: Berita
+  updatedFields: [String!]
+  previousValues: BeritaPreviousValues
+}
+
+input BeritaSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeritaSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeritaSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeritaSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeritaWhereInput
+}
+
+input BeritaUpdateInput {
+  headline: String
+  berita: String
+}
+
+input BeritaUpdateManyMutationInput {
+  headline: String
+  berita: String
+}
+
+input BeritaWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeritaWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeritaWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeritaWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  headline: String
+
+  """All values that are not equal to given value."""
+  headline_not: String
+
+  """All values that are contained in given list."""
+  headline_in: [String!]
+
+  """All values that are not contained in given list."""
+  headline_not_in: [String!]
+
+  """All values less than the given value."""
+  headline_lt: String
+
+  """All values less than or equal the given value."""
+  headline_lte: String
+
+  """All values greater than the given value."""
+  headline_gt: String
+
+  """All values greater than or equal the given value."""
+  headline_gte: String
+
+  """All values containing the given string."""
+  headline_contains: String
+
+  """All values not containing the given string."""
+  headline_not_contains: String
+
+  """All values starting with the given string."""
+  headline_starts_with: String
+
+  """All values not starting with the given string."""
+  headline_not_starts_with: String
+
+  """All values ending with the given string."""
+  headline_ends_with: String
+
+  """All values not ending with the given string."""
+  headline_not_ends_with: String
+  berita: String
+
+  """All values that are not equal to given value."""
+  berita_not: String
+
+  """All values that are contained in given list."""
+  berita_in: [String!]
+
+  """All values that are not contained in given list."""
+  berita_not_in: [String!]
+
+  """All values less than the given value."""
+  berita_lt: String
+
+  """All values less than or equal the given value."""
+  berita_lte: String
+
+  """All values greater than the given value."""
+  berita_gt: String
+
+  """All values greater than or equal the given value."""
+  berita_gte: String
+
+  """All values containing the given string."""
+  berita_contains: String
+
+  """All values not containing the given string."""
+  berita_not_contains: String
+
+  """All values starting with the given string."""
+  berita_starts_with: String
+
+  """All values not starting with the given string."""
+  berita_not_starts_with: String
+
+  """All values ending with the given string."""
+  berita_ends_with: String
+
+  """All values not ending with the given string."""
+  berita_not_ends_with: String
+}
+
+input BeritaWhereUniqueInput {
+  id: ID
 }
 
 type Comment implements Node {
@@ -574,7 +832,6 @@ input DiskusiSubscriptionWhereInput {
 input DiskusiUpdateInput {
   judul: String
   isi: String
-  writtenBy: UserUpdateOneRequiredInput
 }
 
 input DiskusiUpdateManyMutationInput {
@@ -733,7 +990,6 @@ input DiskusiWhereInput {
 
   """All values not ending with the given string."""
   isi_not_ends_with: String
-  writtenBy: UserWhereInput
 }
 
 input DiskusiWhereUniqueInput {
@@ -1214,6 +1470,7 @@ scalar Long
 type Mutation {
   createComment(data: CommentCreateInput!): Comment!
   createDiskusi(data: DiskusiCreateInput!): Diskusi!
+  createBerita(data: BeritaCreateInput!): Berita!
   createLomba(data: LombaCreateInput!): Lomba!
   createFile(data: FileCreateInput!): File!
   createPost(data: PostCreateInput!): Post!
@@ -1221,6 +1478,7 @@ type Mutation {
   createUser(data: UserCreateInput!): User!
   updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
   updateDiskusi(data: DiskusiUpdateInput!, where: DiskusiWhereUniqueInput!): Diskusi
+  updateBerita(data: BeritaUpdateInput!, where: BeritaWhereUniqueInput!): Berita
   updateLomba(data: LombaUpdateInput!, where: LombaWhereUniqueInput!): Lomba
   updateFile(data: FileUpdateInput!, where: FileWhereUniqueInput!): File
   updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
@@ -1228,6 +1486,7 @@ type Mutation {
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   deleteComment(where: CommentWhereUniqueInput!): Comment
   deleteDiskusi(where: DiskusiWhereUniqueInput!): Diskusi
+  deleteBerita(where: BeritaWhereUniqueInput!): Berita
   deleteLomba(where: LombaWhereUniqueInput!): Lomba
   deleteFile(where: FileWhereUniqueInput!): File
   deletePost(where: PostWhereUniqueInput!): Post
@@ -1235,6 +1494,7 @@ type Mutation {
   deleteUser(where: UserWhereUniqueInput!): User
   upsertComment(where: CommentWhereUniqueInput!, create: CommentCreateInput!, update: CommentUpdateInput!): Comment!
   upsertDiskusi(where: DiskusiWhereUniqueInput!, create: DiskusiCreateInput!, update: DiskusiUpdateInput!): Diskusi!
+  upsertBerita(where: BeritaWhereUniqueInput!, create: BeritaCreateInput!, update: BeritaUpdateInput!): Berita!
   upsertLomba(where: LombaWhereUniqueInput!, create: LombaCreateInput!, update: LombaUpdateInput!): Lomba!
   upsertFile(where: FileWhereUniqueInput!, create: FileCreateInput!, update: FileUpdateInput!): File!
   upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
@@ -1242,6 +1502,7 @@ type Mutation {
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   updateManyComments(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
   updateManyDiskusis(data: DiskusiUpdateManyMutationInput!, where: DiskusiWhereInput): BatchPayload!
+  updateManyBeritas(data: BeritaUpdateManyMutationInput!, where: BeritaWhereInput): BatchPayload!
   updateManyLombas(data: LombaUpdateManyMutationInput!, where: LombaWhereInput): BatchPayload!
   updateManyFiles(data: FileUpdateManyMutationInput!, where: FileWhereInput): BatchPayload!
   updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
@@ -1249,6 +1510,7 @@ type Mutation {
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   deleteManyComments(where: CommentWhereInput): BatchPayload!
   deleteManyDiskusis(where: DiskusiWhereInput): BatchPayload!
+  deleteManyBeritas(where: BeritaWhereInput): BatchPayload!
   deleteManyLombas(where: LombaWhereInput): BatchPayload!
   deleteManyFiles(where: FileWhereInput): BatchPayload!
   deleteManyPosts(where: PostWhereInput): BatchPayload!
@@ -1525,6 +1787,7 @@ input PostWhereUniqueInput {
 type Query {
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment]!
   diskusis(where: DiskusiWhereInput, orderBy: DiskusiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Diskusi]!
+  beritas(where: BeritaWhereInput, orderBy: BeritaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Berita]!
   lombas(where: LombaWhereInput, orderBy: LombaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Lomba]!
   files(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File]!
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
@@ -1532,6 +1795,7 @@ type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   comment(where: CommentWhereUniqueInput!): Comment
   diskusi(where: DiskusiWhereUniqueInput!): Diskusi
+  berita(where: BeritaWhereUniqueInput!): Berita
   lomba(where: LombaWhereUniqueInput!): Lomba
   file(where: FileWhereUniqueInput!): File
   post(where: PostWhereUniqueInput!): Post
@@ -1539,6 +1803,7 @@ type Query {
   user(where: UserWhereUniqueInput!): User
   commentsConnection(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommentConnection!
   diskusisConnection(where: DiskusiWhereInput, orderBy: DiskusiOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DiskusiConnection!
+  beritasConnection(where: BeritaWhereInput, orderBy: BeritaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeritaConnection!
   lombasConnection(where: LombaWhereInput, orderBy: LombaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LombaConnection!
   filesConnection(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
   postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
@@ -1555,6 +1820,7 @@ type Query {
 type Subscription {
   comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
   diskusi(where: DiskusiSubscriptionWhereInput): DiskusiSubscriptionPayload
+  berita(where: BeritaSubscriptionWhereInput): BeritaSubscriptionPayload
   lomba(where: LombaSubscriptionWhereInput): LombaSubscriptionPayload
   file(where: FileSubscriptionWhereInput): FileSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
