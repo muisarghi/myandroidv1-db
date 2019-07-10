@@ -60,13 +60,27 @@ enum LombaOrderByInput{
 	lomba_ASC
 }
 
+enum BeritaOrderByInput{
+	id_DESC
+	id_ASC
+	headline_DESC
+	headline_ASC
+}
 
+enum DiskusiOrderByInput{
+	id_DESC
+	id_ASC
+	judul_DESC
+	judul_ASC
+}
 
 type Query {
   getAllLomba: [Lomba!]!
   getLombaDesc(orderBy: LombaOrderByInput): [Lomba]!
   getAllBerita: [Berita!]!
+  getBeritaDesc(orderBy: BeritaOrderByInput): [Berita]!
   getAllDiskusi: [Diskusi]
+  getDiskusiDesc(orderBy: DiskusiOrderByInput): [Diskusi]!
   getAllComment: [Comment]
   getAllFile: [File]
 }
