@@ -1,0 +1,9 @@
+query {
+  getLombaDesc (orderBy: id_DESC)
+  {
+    id
+    lomba
+    ketlomba
+    createdAt
+  }
+}

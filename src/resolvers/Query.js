@@ -5,6 +5,17 @@ function getAllLomba(parent, args, context, info) {
 	return context.db.query.lombas({ }, info)
 }
 
+function getLombaDesc(parent, args, context, info) {
+    //return context.prisma.lombas()
+	const querys = `
+	query {
+		lombas (orderBy: lomba)
+		{}
+	}
+	`;
+	return context.db.query.lombas({orderBy: args.orderBy }, info)
+}
+
 function getAllComment(parent, args, context, info) {
     return context.prisma.comments()
 }
@@ -25,6 +36,7 @@ function getAllFile(parent, args, context, info) {
 
 module.exports = {
     getAllLomba,
+	getLombaDesc,
     getAllComment,
 	getAllBerita,
     getAllDiskusi,
