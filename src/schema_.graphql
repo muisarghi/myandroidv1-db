@@ -86,7 +86,7 @@ type Query {
 }
 
 type User {
-  id: ID! @id
+  id: ID!
   nama: String!
   alamat: String!
   email: String!
