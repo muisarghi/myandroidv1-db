@@ -86,8 +86,12 @@ type Query {
 }
 
 type User {
-  id: ID!
-  name: String!
+  id: ID! @id
+  nama: String!
+  alamat: String!
   email: String!
-  accessRole: String
+  nohp: String!
+  biografi: String!
+  password: String!
+  
 }

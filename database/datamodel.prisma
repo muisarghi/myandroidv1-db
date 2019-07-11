@@ -1,7 +1,10 @@
 type User {
   id: ID! @id
-  name: String!
-  email: String! 
+  nama: String!
+  alamat: String!
+  email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 

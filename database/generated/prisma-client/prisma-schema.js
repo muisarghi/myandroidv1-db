@@ -1020,8 +1020,11 @@ type Subscription {
 
 type User {
   id: ID!
-  name: String!
+  nama: String!
+  alamat: String!
   email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 
@@ -1033,8 +1036,11 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  name: String!
+  nama: String!
+  alamat: String!
   email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 
@@ -1051,18 +1057,27 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  nama_ASC
+  nama_DESC
+  alamat_ASC
+  alamat_DESC
   email_ASC
   email_DESC
+  nohp_ASC
+  nohp_DESC
+  biografi_ASC
+  biografi_DESC
   password_ASC
   password_DESC
 }
 
 type UserPreviousValues {
   id: ID!
-  name: String!
+  nama: String!
+  alamat: String!
   email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 
@@ -1085,20 +1100,29 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
-  name: String
+  nama: String
+  alamat: String
   email: String
+  nohp: String
+  biografi: String
   password: String
 }
 
 input UserUpdateInput {
-  name: String
+  nama: String
+  alamat: String
   email: String
+  nohp: String
+  biografi: String
   password: String
 }
 
 input UserUpdateManyMutationInput {
-  name: String
+  nama: String
+  alamat: String
   email: String
+  nohp: String
+  biografi: String
   password: String
 }
 
@@ -1138,20 +1162,34 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
+  nama: String
+  nama_not: String
+  nama_in: [String!]
+  nama_not_in: [String!]
+  nama_lt: String
+  nama_lte: String
+  nama_gt: String
+  nama_gte: String
+  nama_contains: String
+  nama_not_contains: String
+  nama_starts_with: String
+  nama_not_starts_with: String
+  nama_ends_with: String
+  nama_not_ends_with: String
+  alamat: String
+  alamat_not: String
+  alamat_in: [String!]
+  alamat_not_in: [String!]
+  alamat_lt: String
+  alamat_lte: String
+  alamat_gt: String
+  alamat_gte: String
+  alamat_contains: String
+  alamat_not_contains: String
+  alamat_starts_with: String
+  alamat_not_starts_with: String
+  alamat_ends_with: String
+  alamat_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -1166,6 +1204,34 @@ input UserWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
+  nohp: String
+  nohp_not: String
+  nohp_in: [String!]
+  nohp_not_in: [String!]
+  nohp_lt: String
+  nohp_lte: String
+  nohp_gt: String
+  nohp_gte: String
+  nohp_contains: String
+  nohp_not_contains: String
+  nohp_starts_with: String
+  nohp_not_starts_with: String
+  nohp_ends_with: String
+  nohp_not_ends_with: String
+  biografi: String
+  biografi_not: String
+  biografi_in: [String!]
+  biografi_not_in: [String!]
+  biografi_lt: String
+  biografi_lte: String
+  biografi_gt: String
+  biografi_gte: String
+  biografi_contains: String
+  biografi_not_contains: String
+  biografi_starts_with: String
+  biografi_not_starts_with: String
+  biografi_ends_with: String
+  biografi_not_ends_with: String
   password: String
   password_not: String
   password_in: [String!]

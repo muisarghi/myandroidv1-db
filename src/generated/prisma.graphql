@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird
-# timestamp: Tue Jul 09 2019 08:33:34 GMT+0700 (Indochina Time)
+# timestamp: Thu Jul 11 2019 12:48:29 GMT+0700 (Indochina Time)
 
 type AggregateAuthPayload {
   count: Int!
@@ -1830,8 +1830,11 @@ type Subscription {
 
 type User implements Node {
   id: ID!
-  name: String!
+  nama: String!
+  alamat: String!
   email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 
@@ -1847,8 +1850,11 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  name: String!
+  nama: String!
+  alamat: String!
   email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 
@@ -1869,18 +1875,27 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
+  nama_ASC
+  nama_DESC
+  alamat_ASC
+  alamat_DESC
   email_ASC
   email_DESC
+  nohp_ASC
+  nohp_DESC
+  biografi_ASC
+  biografi_DESC
   password_ASC
   password_DESC
 }
 
 type UserPreviousValues {
   id: ID!
-  name: String!
+  nama: String!
+  alamat: String!
   email: String!
+  nohp: String!
+  biografi: String!
   password: String!
 }
 
@@ -1922,20 +1937,29 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
-  name: String
+  nama: String
+  alamat: String
   email: String
+  nohp: String
+  biografi: String
   password: String
 }
 
 input UserUpdateInput {
-  name: String
+  nama: String
+  alamat: String
   email: String
+  nohp: String
+  biografi: String
   password: String
 }
 
 input UserUpdateManyMutationInput {
-  name: String
+  nama: String
+  alamat: String
   email: String
+  nohp: String
+  biografi: String
   password: String
 }
 
@@ -2009,46 +2033,86 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  name: String
+  nama: String
 
   """All values that are not equal to given value."""
-  name_not: String
+  nama_not: String
 
   """All values that are contained in given list."""
-  name_in: [String!]
+  nama_in: [String!]
 
   """All values that are not contained in given list."""
-  name_not_in: [String!]
+  nama_not_in: [String!]
 
   """All values less than the given value."""
-  name_lt: String
+  nama_lt: String
 
   """All values less than or equal the given value."""
-  name_lte: String
+  nama_lte: String
 
   """All values greater than the given value."""
-  name_gt: String
+  nama_gt: String
 
   """All values greater than or equal the given value."""
-  name_gte: String
+  nama_gte: String
 
   """All values containing the given string."""
-  name_contains: String
+  nama_contains: String
 
   """All values not containing the given string."""
-  name_not_contains: String
+  nama_not_contains: String
 
   """All values starting with the given string."""
-  name_starts_with: String
+  nama_starts_with: String
 
   """All values not starting with the given string."""
-  name_not_starts_with: String
+  nama_not_starts_with: String
 
   """All values ending with the given string."""
-  name_ends_with: String
+  nama_ends_with: String
 
   """All values not ending with the given string."""
-  name_not_ends_with: String
+  nama_not_ends_with: String
+  alamat: String
+
+  """All values that are not equal to given value."""
+  alamat_not: String
+
+  """All values that are contained in given list."""
+  alamat_in: [String!]
+
+  """All values that are not contained in given list."""
+  alamat_not_in: [String!]
+
+  """All values less than the given value."""
+  alamat_lt: String
+
+  """All values less than or equal the given value."""
+  alamat_lte: String
+
+  """All values greater than the given value."""
+  alamat_gt: String
+
+  """All values greater than or equal the given value."""
+  alamat_gte: String
+
+  """All values containing the given string."""
+  alamat_contains: String
+
+  """All values not containing the given string."""
+  alamat_not_contains: String
+
+  """All values starting with the given string."""
+  alamat_starts_with: String
+
+  """All values not starting with the given string."""
+  alamat_not_starts_with: String
+
+  """All values ending with the given string."""
+  alamat_ends_with: String
+
+  """All values not ending with the given string."""
+  alamat_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -2089,6 +2153,86 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   email_not_ends_with: String
+  nohp: String
+
+  """All values that are not equal to given value."""
+  nohp_not: String
+
+  """All values that are contained in given list."""
+  nohp_in: [String!]
+
+  """All values that are not contained in given list."""
+  nohp_not_in: [String!]
+
+  """All values less than the given value."""
+  nohp_lt: String
+
+  """All values less than or equal the given value."""
+  nohp_lte: String
+
+  """All values greater than the given value."""
+  nohp_gt: String
+
+  """All values greater than or equal the given value."""
+  nohp_gte: String
+
+  """All values containing the given string."""
+  nohp_contains: String
+
+  """All values not containing the given string."""
+  nohp_not_contains: String
+
+  """All values starting with the given string."""
+  nohp_starts_with: String
+
+  """All values not starting with the given string."""
+  nohp_not_starts_with: String
+
+  """All values ending with the given string."""
+  nohp_ends_with: String
+
+  """All values not ending with the given string."""
+  nohp_not_ends_with: String
+  biografi: String
+
+  """All values that are not equal to given value."""
+  biografi_not: String
+
+  """All values that are contained in given list."""
+  biografi_in: [String!]
+
+  """All values that are not contained in given list."""
+  biografi_not_in: [String!]
+
+  """All values less than the given value."""
+  biografi_lt: String
+
+  """All values less than or equal the given value."""
+  biografi_lte: String
+
+  """All values greater than the given value."""
+  biografi_gt: String
+
+  """All values greater than or equal the given value."""
+  biografi_gte: String
+
+  """All values containing the given string."""
+  biografi_contains: String
+
+  """All values not containing the given string."""
+  biografi_not_contains: String
+
+  """All values starting with the given string."""
+  biografi_starts_with: String
+
+  """All values not starting with the given string."""
+  biografi_not_starts_with: String
+
+  """All values ending with the given string."""
+  biografi_ends_with: String
+
+  """All values not ending with the given string."""
+  biografi_not_ends_with: String
   password: String
 
   """All values that are not equal to given value."""
