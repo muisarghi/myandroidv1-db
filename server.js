@@ -1,11 +1,25 @@
+
+
 //const { ApolloServer, gql } = require('apollo-server');
+//import * as jwt from 'jsonwebtoken';
+
 const { GraphQLServer } = require('graphql-yoga')
+const bcrypt = require('bcryptjs')
+const jwt = require('./node_modules/jsonwebtoken')
+//const { GraphQLServer } = require('graphql-yoga')
+
+//const { jwt } = require('jsonwebtoken')
 //const { prisma } = require('./database/generated/prisma-client');
 const { Prisma } = require('./database/node_modules/prisma-binding')
 const { importSchema } = require('./node_modules/graphql-import')
 const { makeExecutableSchema } = require('./node_modules/graphql-tools');
 const Query = require('./src/resolvers/Query')
 const Mutation = require('./src/resolvers/Mutation')
+
+//const bcrypt = require('bcryptjs');
+const token = jwt.sign({ claims: 'read-post' }, 'secret', {
+  algorithm: 'HS256',
+})
 
 const resolvers = {
 	Query,
@@ -66,9 +80,9 @@ server.listen().then(({ url }) => {
 });
 */
 
-server.start(() => console.log(`Server is running on http://localhost:4000`))
-
-
+server.start(() => console.log(`Server is running on http://localhost:4000 -`))
+//return token;
+//server.start(() => console.log(`token`))
 /*
 Query: 
 	{

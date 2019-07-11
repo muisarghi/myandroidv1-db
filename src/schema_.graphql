@@ -3,8 +3,8 @@
 
 type AuthPayload {
   id: ID!
-  token: String
-  user: User
+  token: String!
+  user: User!
 }
 
 type Comment {
