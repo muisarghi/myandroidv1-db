@@ -4,7 +4,7 @@
 //import * as jwt from 'jsonwebtoken';
 
 const { GraphQLServer } = require('graphql-yoga')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('./node_modules/bcryptjs')
 const jwt = require('./node_modules/jsonwebtoken')
 //const { GraphQLServer } = require('graphql-yoga')
 

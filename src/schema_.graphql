@@ -49,9 +49,20 @@ type Mutation {
   createLomba(lomba: String, ketlomba: String): Lomba!
   createDiskusi(judul: String!, isi: String!): Diskusi!
   createBerita(headline: String!, berita: String!): Berita!
+  createUser(nama: String!, alamat: String!, email: String!, nohp: String!, biografi: String!, password: String!): User!
   createFile(file: String!): File
 }
 
+type User {
+  id: ID!
+  nama: String!
+  alamat: String!
+  email: String!
+  nohp: String!
+  biografi: String!
+  password: String!
+  
+}
 
 enum LombaOrderByInput{
 	id_DESC
@@ -85,13 +96,4 @@ type Query {
   getAllFile: [File]
 }
 
-type User {
-  id: ID!
-  nama: String!
-  alamat: String!
-  email: String!
-  nohp: String!
-  biografi: String!
-  password: String!
-  
-}
+

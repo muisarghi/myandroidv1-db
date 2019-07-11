@@ -54,7 +54,20 @@ async function createLomba (context, { lomba, ketlomba }) {
       })
 		}
 		*/
+
+async function createUser(parent, args, context, info) {
+    const password = await bcrypt.hash(args.password, 10)
 		
+	return context.db.mutation.createUser({data:{
+    nama: args.nama,
+	alamat: args.alamat,
+	email: args.email,
+	nohp: args.nohp,
+	biografi: args.biografi,
+	password: args.password,
+    }}, info)
+}
+	
 async function createLomba(parent, args, context, info) {
     //const userId = getUserId(context)
 	//return context.db.query.lombas({ }, info)
