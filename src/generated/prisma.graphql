@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird
-# timestamp: Thu Jul 11 2019 12:48:29 GMT+0700 (Indochina Time)
+# timestamp: Thu Jul 11 2019 14:07:25 GMT+0700 (Indochina Time)
 
 type AggregateAuthPayload {
   count: Int!

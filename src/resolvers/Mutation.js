@@ -1,7 +1,7 @@
 //const bcrypt = require('bcryptjs')
 //const jwt = require('jsonwebtoken')
 //const { APP_SECRET, getUserId } = require('./Utils')
-
+const bcrypt = require('../../node_modules/bcryptjs')
 async function signup(parent, args, context, info) {
 
     //const password = await bcrypt.hash(args.password, 10)
@@ -56,7 +56,7 @@ async function createLomba (context, { lomba, ketlomba }) {
 		*/
 
 async function createUser(parent, args, context, info) {
-    const password = await bcrypt.hash(args.password, 10)
+    const passwordx = await bcrypt.hash(args.password, 10)
 		
 	return context.db.mutation.createUser({data:{
     nama: args.nama,
@@ -64,7 +64,7 @@ async function createUser(parent, args, context, info) {
 	email: args.email,
 	nohp: args.nohp,
 	biografi: args.biografi,
-	password: args.password,
+	password: passwordx,
     }}, info)
 }
 	
@@ -117,5 +117,6 @@ module.exports = {
 	createComment,
 	createLomba,
 	createDiskusi,
-	createBerita
+	createBerita,
+	createUser
 }
