@@ -85,6 +85,18 @@ enum DiskusiOrderByInput{
 	judul_ASC
 }
 
+enum UserOrderByInput{
+	id_DESC
+	id_ASC
+	nama_DESC
+	nama_ASC
+}
+
+enum WhereUser{
+	nama
+	email
+}
+
 type Query {
   getAllLomba: [Lomba!]!
   getLombaDesc(orderBy: LombaOrderByInput): [Lomba]!
@@ -92,6 +104,7 @@ type Query {
   getBeritaDesc(orderBy: BeritaOrderByInput): [Berita]!
   getAllDiskusi: [Diskusi]
   getDiskusiDesc(orderBy: DiskusiOrderByInput): [Diskusi]!
+  searchUser(searchNama:String! , orderBy: UserOrderByInput): [User]!
   getAllComment: [Comment]
   getAllFile: [File]
 }

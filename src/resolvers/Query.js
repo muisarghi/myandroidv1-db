@@ -35,6 +35,11 @@ function getAllBerita(parent, args, context, info) {
 	return context.db.query.beritas({ }, info)
 }
 
+function searchUser(parent, args, context, info) {
+    //return context.prisma.diskusis()
+	return context.db.query.users({ where:{nama:args.searchNama}, orderBy: args.orderBy}, info)
+}
+
 function getAllFile(parent, args, context, info) {
     return context.prisma.files()
 }
@@ -47,5 +52,6 @@ module.exports = {
     getAllComment,
 	getAllBerita,
     getAllDiskusi,
+	searchUser,
     getAllFile
 }
