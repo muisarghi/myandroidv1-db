@@ -44,7 +44,20 @@ function getAllFile(parent, args, context, info) {
     return context.prisma.files()
 }
 
+function user(parent, args, context, info) {
+    const userId = getUserId(context)
+
+    //return context.prisma.user({ id: userId })
+	return context.db.query.users({ id: userId }, info)
+}
+
+async function getUserIdQuery(parent, args, context, info) {
+    return getUserId(context)
+}
+
 module.exports = {
+	user,
+	getUserIdQuery,
     getAllLomba,
 	getLombaDesc,
 	getDiskusiDesc,

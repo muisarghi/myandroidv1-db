@@ -3,8 +3,8 @@
 
 type AuthPayload {
   id: ID!
-  token: String!
-  user: User!
+  token: String
+  user: User
 }
 
 type Comment {
@@ -98,6 +98,8 @@ enum WhereUser{
 }
 
 type Query {
+  user: User!
+  getUserIdQuery: String!
   getAllLomba: [Lomba!]!
   getLombaDesc(orderBy: LombaOrderByInput): [Lomba]!
   getAllBerita: [Berita!]!

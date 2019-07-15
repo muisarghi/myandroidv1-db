@@ -17,9 +17,9 @@ const Query = require('./src/resolvers/Query')
 const Mutation = require('./src/resolvers/Mutation')
 
 //const bcrypt = require('bcryptjs');
-const token = jwt.sign({ claims: 'read-post' }, 'secret', {
+/*const token = jwt.sign({ claims: 'read-post' }, 'secret', {
   algorithm: 'HS256',
-})
+})*/
 
 const resolvers = {
 	Query,

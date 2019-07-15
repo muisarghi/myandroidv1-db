@@ -1,7 +1,10 @@
 //const bcrypt = require('bcryptjs')
-//const jwt = require('jsonwebtoken')
+
 //const { APP_SECRET, getUserId } = require('./Utils')
 const bcrypt = require('../../node_modules/bcryptjs')
+const jwt = require('../../node_modules/jsonwebtoken')
+const { APP_SECRET, getUserId } = require('./Utils')
+
 async function signup(parent, args, context, info) {
 
     //const password = await bcrypt.hash(args.password, 10)
@@ -15,22 +18,28 @@ async function signup(parent, args, context, info) {
     }
 }
 
-async function login(parent, args, context, info) {
-
-    const user = await context.prisma.user({ email: args.email })
+async function login(parent, {email, password}, context, info) {
+	/*
+	return context.db.mutation.createLomba({data:{
+    lomba: args.lomba,
+	ketlomba: args.ketlomba,
+    }}, info)*/
+    //const user = await context.prisma.user({ email: args.email })
+	const user = await context.db.query.users({where:{ email }})
+    
     if (!user) {
         throw new Error('No such user found')
     }
 
-    //const valid = await bcrypt.compare(args.password, user.password)
-    //if (!valid) {
-      //  throw new Error('Invalid password')
-    //}
+    const valid = await bcrypt.compare(password, hash, user.password)
+    if (!valid) {
+       throw new Error('Invalid password')
+    }
 
-    //const token = jwt.sign({ userId: user.id }, APP_SECRET)
-	const token = ({ userId: user.id })
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
+	//const token = ({ userId: user.id })
     return {
-        token,
+		token,
         user,
     }
 }
