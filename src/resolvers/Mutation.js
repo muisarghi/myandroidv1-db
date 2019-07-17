@@ -113,6 +113,7 @@ async function createUser(parent, args, context, info) {
 }
 	
 async function createLomba(parent, args, context, info) {
+	const userId = getUserId(context)
     //const userId = getUserId(context)
 	//return context.db.query.lombas({ }, info)
 	
@@ -123,6 +124,7 @@ async function createLomba(parent, args, context, info) {
 	return context.db.mutation.createLomba({data:{
     lomba: args.lomba,
 	ketlomba: args.ketlomba,
+	writtenBy: { connect: { id: userId } }
     }}, info)
 }
 

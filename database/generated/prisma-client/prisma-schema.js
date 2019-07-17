@@ -657,6 +657,7 @@ type Lomba {
   createdAt: DateTime!
   lomba: String!
   ketlomba: String!
+  writtenBy: User!
 }
 
 type LombaConnection {
@@ -669,6 +670,7 @@ input LombaCreateInput {
   id: ID
   lomba: String!
   ketlomba: String!
+  writtenBy: UserCreateOneInput!
 }
 
 type LombaEdge {
@@ -715,6 +717,7 @@ input LombaSubscriptionWhereInput {
 input LombaUpdateInput {
   lomba: String
   ketlomba: String
+  writtenBy: UserUpdateOneRequiredInput
 }
 
 input LombaUpdateManyMutationInput {
@@ -773,6 +776,7 @@ input LombaWhereInput {
   ketlomba_not_starts_with: String
   ketlomba_ends_with: String
   ketlomba_not_ends_with: String
+  writtenBy: UserWhereInput
   AND: [LombaWhereInput!]
   OR: [LombaWhereInput!]
   NOT: [LombaWhereInput!]

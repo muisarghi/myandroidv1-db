@@ -34,6 +34,7 @@ type Lomba {
   createdAt: DateTime! @createdAt
   lomba: String!
   ketlomba: String!
+  writtenBy: User!
 }
 
 type File {
@@ -54,4 +55,6 @@ type AuthPayload {
     id: ID! @id
     token: String 
     user: User
+	updatedAt: DateTime!
+	createdAt: DateTime!
 }

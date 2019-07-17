@@ -755,6 +755,7 @@ export interface LombaWhereInput {
   ketlomba_not_starts_with?: Maybe<String>;
   ketlomba_ends_with?: Maybe<String>;
   ketlomba_not_ends_with?: Maybe<String>;
+  writtenBy?: Maybe<UserWhereInput>;
   AND?: Maybe<LombaWhereInput[] | LombaWhereInput>;
   OR?: Maybe<LombaWhereInput[] | LombaWhereInput>;
   NOT?: Maybe<LombaWhereInput[] | LombaWhereInput>;
@@ -879,6 +880,7 @@ export interface LombaCreateInput {
   id?: Maybe<ID_Input>;
   lomba: String;
   ketlomba: String;
+  writtenBy: UserCreateOneInput;
 }
 
 export interface BeritaUpdateManyMutationInput {
@@ -1177,6 +1179,7 @@ export interface DiskusiSubscriptionWhereInput {
 export interface LombaUpdateInput {
   lomba?: Maybe<String>;
   ketlomba?: Maybe<String>;
+  writtenBy?: Maybe<UserUpdateOneRequiredInput>;
 }
 
 export interface UserCreateOneInput {
@@ -1930,6 +1933,7 @@ export interface LombaPromise extends Promise<Lomba>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   lomba: () => Promise<String>;
   ketlomba: () => Promise<String>;
+  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface LombaSubscription
@@ -1939,6 +1943,7 @@ export interface LombaSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   lomba: () => Promise<AsyncIterator<String>>;
   ketlomba: () => Promise<AsyncIterator<String>>;
+  writtenBy: <T = UserSubscription>() => T;
 }
 
 export interface LombaNullablePromise
@@ -1948,6 +1953,7 @@ export interface LombaNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   lomba: () => Promise<String>;
   ketlomba: () => Promise<String>;
+  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface DiskusiPreviousValues {

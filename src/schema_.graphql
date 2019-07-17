@@ -1,11 +1,24 @@
 # source: https://lovebird-komunitas.herokuapp.com/
-# timestamp: Tue Jul 09 2019 08:33:46 GMT+0700 (Indochina Time)
+# timestamp: Wed Jul 17 2019 15:49:02 GMT+0700 (Indochina Time)
 
 type AuthPayload {
   token: String
   user: User
 }
 
+type Berita {
+  id: ID!
+  createdAt: String!
+  headline: String!
+  berita: String!
+}
+
+enum BeritaOrderByInput {
+  id_DESC
+  id_ASC
+  headline_DESC
+  headline_ASC
+}
 
 type Comment {
   id: ID!
@@ -21,11 +34,11 @@ type Diskusi {
   isi: String!
 }
 
-type Berita {
-  id: ID!
-  createdAt: String!
-  headline: String!
-  berita: String!
+enum DiskusiOrderByInput {
+  id_DESC
+  id_ASC
+  judul_DESC
+  judul_ASC
 }
 
 type File {
@@ -42,6 +55,13 @@ type Lomba {
   ketlomba: String
 }
 
+enum LombaOrderByInput {
+  id_DESC
+  id_ASC
+  lomba_DESC
+  lomba_ASC
+}
+
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
@@ -54,6 +74,21 @@ type Mutation {
   createFile(file: String!): File
 }
 
+type Query {
+  user: User!
+  getUser(email: String!, password: String!): [User]!
+  getUserIdQuery: String!
+  getAllLomba: [Lomba!]!
+  getLombaDesc(orderBy: LombaOrderByInput): [Lomba]!
+  getAllBerita: [Berita!]!
+  getBeritaDesc(orderBy: BeritaOrderByInput): [Berita]!
+  getAllDiskusi: [Diskusi]
+  getDiskusiDesc(orderBy: DiskusiOrderByInput): [Diskusi]!
+  searchUser(searchNama: String!, orderBy: UserOrderByInput): [User]!
+  getAllComment: [Comment]
+  getAllFile: [File]
+}
+
 type User {
   id: ID!
   nama: String!
@@ -62,55 +97,16 @@ type User {
   nohp: String!
   biografi: String!
   password: String!
-  
 }
 
-enum LombaOrderByInput{
-	id_DESC
-	id_ASC
-	lomba_DESC
-	lomba_ASC
+enum UserOrderByInput {
+  id_DESC
+  id_ASC
+  nama_DESC
+  nama_ASC
 }
 
-enum BeritaOrderByInput{
-	id_DESC
-	id_ASC
-	headline_DESC
-	headline_ASC
+enum WhereUser {
+  nama
+  email
 }
-
-enum DiskusiOrderByInput{
-	id_DESC
-	id_ASC
-	judul_DESC
-	judul_ASC
-}
-
-enum UserOrderByInput{
-	id_DESC
-	id_ASC
-	nama_DESC
-	nama_ASC
-}
-
-enum WhereUser{
-	nama
-	email
-}
-
-type Query {
-  user: User!
-  getUser(email:String!, password:String!): [User]!
-  getUserIdQuery: String!
-  getAllLomba: [Lomba!]!
-  getLombaDesc(orderBy: LombaOrderByInput): [Lomba]!
-  getAllBerita: [Berita!]!
-  getBeritaDesc(orderBy: BeritaOrderByInput): [Berita]!
-  getAllDiskusi: [Diskusi]
-  getDiskusiDesc(orderBy: DiskusiOrderByInput): [Diskusi]!
-  searchUser(searchNama:String! , orderBy: UserOrderByInput): [User]!
-  getAllComment: [Comment]
-  getAllFile: [File]
-}
-
-

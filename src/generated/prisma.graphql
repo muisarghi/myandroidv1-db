@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird
-# timestamp: Thu Jul 11 2019 14:07:25 GMT+0700 (Indochina Time)
+# timestamp: Wed Jul 17 2019 15:21:58 GMT+0700 (Indochina Time)
 
 type AggregateAuthPayload {
   count: Int!
@@ -54,6 +54,8 @@ type AuthPayloadConnection {
 input AuthPayloadCreateInput {
   id: ID
   token: String
+  updatedAt: DateTime!
+  createdAt: DateTime!
   user: UserCreateOneInput
 }
 
@@ -123,11 +125,15 @@ input AuthPayloadSubscriptionWhereInput {
 
 input AuthPayloadUpdateInput {
   token: String
+  updatedAt: DateTime
+  createdAt: DateTime
   user: UserUpdateOneInput
 }
 
 input AuthPayloadUpdateManyMutationInput {
   token: String
+  updatedAt: DateTime
+  createdAt: DateTime
 }
 
 input AuthPayloadWhereInput {
@@ -1212,6 +1218,7 @@ type Lomba implements Node {
   createdAt: DateTime!
   lomba: String!
   ketlomba: String!
+  writtenBy: User!
 }
 
 """A connection to a list of items."""
@@ -1228,6 +1235,7 @@ input LombaCreateInput {
   id: ID
   lomba: String!
   ketlomba: String!
+  writtenBy: UserCreateOneInput!
 }
 
 """An edge in a connection."""
@@ -1297,6 +1305,7 @@ input LombaSubscriptionWhereInput {
 input LombaUpdateInput {
   lomba: String
   ketlomba: String
+  writtenBy: UserUpdateOneRequiredInput
 }
 
 input LombaUpdateManyMutationInput {
@@ -1455,6 +1464,7 @@ input LombaWhereInput {
 
   """All values not ending with the given string."""
   ketlomba_not_ends_with: String
+  writtenBy: UserWhereInput
 }
 
 input LombaWhereUniqueInput {
