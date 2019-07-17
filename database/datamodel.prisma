@@ -54,6 +54,4 @@ type AuthPayload {
     id: ID! @id
     token: String 
     user: User
-    updatedAt: DateTime! @updatedAt
-    createdAt: DateTime! @createdAt
 }

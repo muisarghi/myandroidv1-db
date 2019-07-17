@@ -18,30 +18,65 @@ async function signup(parent, args, context, info) {
     }
 }
 
-async function login(parent, {email, password}, context, info) {
+async function login(parent, args, context, info) {
 	/*
 	return context.db.mutation.createLomba({data:{
     lomba: args.lomba,
 	ketlomba: args.ketlomba,
     }}, info)*/
-    //const user = await context.prisma.user({ email: args.email })
-	const user = await context.db.query.users({where:{ email }})
+    //const user = await context.db.prisma.user({ email: args.email })
+	//const passwordx = await bcrypt.hash(args.password, 10)
+	/*return context.db.mutation.login({data:{
+    email: args.email,
+	password: args.password,
+    }}, info)*/
+
+	const user = await context.db.query.users({where:{ email: args.email }}, '{id nama alamat email nohp biografi password}', info)
+	//const password = await context.db.query.users({where:{ data: {email: args.email} }}, `{ password }`, info)
+	//const userid = await context.db.query.users({where:{ email: args.email }}, `{ id }`)
     
     if (!user) {
         throw new Error('No such user found')
     }
-
-    const valid = await bcrypt.compare(password, hash, user.password)
+	
+	//const passx= await bcrypt.compareSync(user.password, hash)
+	const userx = user[0]
+	const idx= user[0].id
+	const namax= user[0].nama
+	const alamatx= user[0].alamat
+	const emailx= user[0].email
+	const nohpx= user[0].nohp
+	const biografix= user[0].biografi
+	const passwordx= user[0].password
+	
+	//const userx = JSON.stringify(user[0]);
+	//const usery = JSON.toJSON(userx);
+	//const userx = toJSON(user[0]);
+	console.log("passwords match!", userx);
+	
+    const valid = await bcrypt.compare(args.password, user[0].password)
+	//const valid = await bcrypt.compare(args.password, passx)
     if (!valid) {
        throw new Error('Invalid password')
+	   
     }
-
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET)
+	//const passnyo = user.password
+    const token = jwt.sign({ userId: user[0].id }, APP_SECRET)
 	//const token = ({ userId: user.id })
-    return {
-		token,
-        user,
+	console.log ( 'Type Data : ', typeof userx)
+	
+    /*return {data{
+		token: token,
+		user: userx
+	}
     }
+	*/
+	return context.db.mutation.createAuthPayload({data:{
+	token: token,
+	//user: {connect: {id:idx, nama:namax, alamat:alamatx, email:emailx, nohp:nohpx, biografi:biografix, password:passwordx}},
+	user: {connect: {id:idx}}
+    }}, info)
+	
 }
 
 
@@ -129,3 +164,5 @@ module.exports = {
 	createBerita,
 	createUser
 }
+
+

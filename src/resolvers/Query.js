@@ -40,6 +40,11 @@ function searchUser(parent, args, context, info) {
 	return context.db.query.users({ where:{nama:args.searchNama}, orderBy: args.orderBy}, info)
 }
 
+function getUser(parent, args, context, info) {
+    //return context.prisma.diskusis()
+	return context.db.query.users({ where:{email:args.email}}, info)
+}
+
 function getAllFile(parent, args, context, info) {
     return context.prisma.files()
 }
@@ -48,15 +53,21 @@ function user(parent, args, context, info) {
     const userId = getUserId(context)
 
     //return context.prisma.user({ id: userId })
-	return context.db.query.users({ id: userId }, info)
+	return context.db.query.users({ }, info)
 }
 
 async function getUserIdQuery(parent, args, context, info) {
     return getUserId(context)
 }
 
+//async function Authpayload ({ user: { userId } }, args, context, info)
+//{
+  //  return context.db.query.users({ where: { userId } }, info)
+//}
+
 module.exports = {
 	user,
+	getUser,
 	getUserIdQuery,
     getAllLomba,
 	getLombaDesc,
