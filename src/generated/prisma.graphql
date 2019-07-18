@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/lovebirdcom/lovebird/lovebird
-# timestamp: Wed Jul 17 2019 15:21:58 GMT+0700 (Indochina Time)
+# timestamp: Thu Jul 18 2019 12:50:11 GMT+0700 (Indochina Time)
 
 type AggregateAuthPayload {
   count: Int!
@@ -286,6 +286,7 @@ type Berita implements Node {
   createdAt: DateTime!
   headline: String!
   berita: String!
+  writtenBy: User!
 }
 
 """A connection to a list of items."""
@@ -302,6 +303,7 @@ input BeritaCreateInput {
   id: ID
   headline: String!
   berita: String!
+  writtenBy: UserCreateOneInput!
 }
 
 """An edge in a connection."""
@@ -371,6 +373,7 @@ input BeritaSubscriptionWhereInput {
 input BeritaUpdateInput {
   headline: String
   berita: String
+  writtenBy: UserUpdateOneRequiredInput
 }
 
 input BeritaUpdateManyMutationInput {
@@ -529,6 +532,7 @@ input BeritaWhereInput {
 
   """All values not ending with the given string."""
   berita_not_ends_with: String
+  writtenBy: UserWhereInput
 }
 
 input BeritaWhereUniqueInput {
@@ -753,6 +757,7 @@ type Diskusi implements Node {
   createdAt: DateTime!
   judul: String!
   isi: String!
+  writtenBy: User!
 }
 
 """A connection to a list of items."""
@@ -769,6 +774,7 @@ input DiskusiCreateInput {
   id: ID
   judul: String!
   isi: String!
+  writtenBy: UserCreateOneInput!
 }
 
 """An edge in a connection."""
@@ -838,6 +844,7 @@ input DiskusiSubscriptionWhereInput {
 input DiskusiUpdateInput {
   judul: String
   isi: String
+  writtenBy: UserUpdateOneRequiredInput
 }
 
 input DiskusiUpdateManyMutationInput {
@@ -996,6 +1003,7 @@ input DiskusiWhereInput {
 
   """All values not ending with the given string."""
   isi_not_ends_with: String
+  writtenBy: UserWhereInput
 }
 
 input DiskusiWhereUniqueInput {
