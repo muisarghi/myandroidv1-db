@@ -472,6 +472,7 @@ export interface DiskusiCreateInput {
   id?: Maybe<ID_Input>;
   judul: String;
   isi: String;
+  writtenBy: UserCreateOneInput;
 }
 
 export type AuthPayloadWhereUniqueInput = AtLeastOne<{
@@ -608,11 +609,9 @@ export type BeritaWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface UserUpdateOneRequiredInput {
-  create?: Maybe<UserCreateInput>;
-  update?: Maybe<UserUpdateDataInput>;
-  upsert?: Maybe<UserUpsertNestedInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface CommentUpdateInput {
+  text?: Maybe<String>;
+  writtenBy?: Maybe<UserUpdateOneRequiredInput>;
 }
 
 export interface BeritaWhereInput {
@@ -666,14 +665,16 @@ export interface BeritaWhereInput {
   berita_not_starts_with?: Maybe<String>;
   berita_ends_with?: Maybe<String>;
   berita_not_ends_with?: Maybe<String>;
+  writtenBy?: Maybe<UserWhereInput>;
   AND?: Maybe<BeritaWhereInput[] | BeritaWhereInput>;
   OR?: Maybe<BeritaWhereInput[] | BeritaWhereInput>;
   NOT?: Maybe<BeritaWhereInput[] | BeritaWhereInput>;
 }
 
-export interface CommentUpdateInput {
-  text?: Maybe<String>;
-  writtenBy?: Maybe<UserUpdateOneRequiredInput>;
+export interface CommentCreateInput {
+  id?: Maybe<ID_Input>;
+  text: String;
+  writtenBy: UserCreateOneInput;
 }
 
 export interface PostUpdateManyMutationInput {
@@ -693,10 +694,9 @@ export interface PostCreateInput {
   published: Boolean;
 }
 
-export interface CommentCreateInput {
-  id?: Maybe<ID_Input>;
-  text: String;
-  writtenBy: UserCreateOneInput;
+export interface BeritaUpdateManyMutationInput {
+  headline?: Maybe<String>;
+  berita?: Maybe<String>;
 }
 
 export interface LombaUpdateManyMutationInput {
@@ -883,9 +883,11 @@ export interface LombaCreateInput {
   writtenBy: UserCreateOneInput;
 }
 
-export interface BeritaUpdateManyMutationInput {
-  headline?: Maybe<String>;
-  berita?: Maybe<String>;
+export interface UserUpdateOneRequiredInput {
+  create?: Maybe<UserCreateInput>;
+  update?: Maybe<UserUpdateDataInput>;
+  upsert?: Maybe<UserUpsertNestedInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export type DiskusiWhereUniqueInput = AtLeastOne<{
@@ -895,6 +897,7 @@ export type DiskusiWhereUniqueInput = AtLeastOne<{
 export interface BeritaUpdateInput {
   headline?: Maybe<String>;
   berita?: Maybe<String>;
+  writtenBy?: Maybe<UserUpdateOneRequiredInput>;
 }
 
 export interface DiskusiWhereInput {
@@ -948,6 +951,7 @@ export interface DiskusiWhereInput {
   isi_not_starts_with?: Maybe<String>;
   isi_ends_with?: Maybe<String>;
   isi_not_ends_with?: Maybe<String>;
+  writtenBy?: Maybe<UserWhereInput>;
   AND?: Maybe<DiskusiWhereInput[] | DiskusiWhereInput>;
   OR?: Maybe<DiskusiWhereInput[] | DiskusiWhereInput>;
   NOT?: Maybe<DiskusiWhereInput[] | DiskusiWhereInput>;
@@ -957,6 +961,7 @@ export interface BeritaCreateInput {
   id?: Maybe<ID_Input>;
   headline: String;
   berita: String;
+  writtenBy: UserCreateOneInput;
 }
 
 export interface FileCreateInput {
@@ -972,6 +977,7 @@ export type PostWhereUniqueInput = AtLeastOne<{
 export interface DiskusiUpdateInput {
   judul?: Maybe<String>;
   isi?: Maybe<String>;
+  writtenBy?: Maybe<UserUpdateOneRequiredInput>;
 }
 
 export interface AuthPayloadUpdateManyMutationInput {
@@ -1317,6 +1323,7 @@ export interface BeritaPromise extends Promise<Berita>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   headline: () => Promise<String>;
   berita: () => Promise<String>;
+  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface BeritaSubscription
@@ -1326,6 +1333,7 @@ export interface BeritaSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   headline: () => Promise<AsyncIterator<String>>;
   berita: () => Promise<AsyncIterator<String>>;
+  writtenBy: <T = UserSubscription>() => T;
 }
 
 export interface BeritaNullablePromise
@@ -1335,6 +1343,7 @@ export interface BeritaNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   headline: () => Promise<String>;
   berita: () => Promise<String>;
+  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface AggregateUser {
@@ -2059,6 +2068,7 @@ export interface DiskusiPromise extends Promise<Diskusi>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   judul: () => Promise<String>;
   isi: () => Promise<String>;
+  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface DiskusiSubscription
@@ -2068,6 +2078,7 @@ export interface DiskusiSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   judul: () => Promise<AsyncIterator<String>>;
   isi: () => Promise<AsyncIterator<String>>;
+  writtenBy: <T = UserSubscription>() => T;
 }
 
 export interface DiskusiNullablePromise
@@ -2077,6 +2088,7 @@ export interface DiskusiNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   judul: () => Promise<String>;
   isi: () => Promise<String>;
+  writtenBy: <T = UserPromise>() => T;
 }
 
 export interface FileSubscriptionPayload {

@@ -169,6 +169,7 @@ type Berita {
   createdAt: DateTime!
   headline: String!
   berita: String!
+  writtenBy: User!
 }
 
 type BeritaConnection {
@@ -181,6 +182,7 @@ input BeritaCreateInput {
   id: ID
   headline: String!
   berita: String!
+  writtenBy: UserCreateOneInput!
 }
 
 type BeritaEdge {
@@ -227,6 +229,7 @@ input BeritaSubscriptionWhereInput {
 input BeritaUpdateInput {
   headline: String
   berita: String
+  writtenBy: UserUpdateOneRequiredInput
 }
 
 input BeritaUpdateManyMutationInput {
@@ -285,6 +288,7 @@ input BeritaWhereInput {
   berita_not_starts_with: String
   berita_ends_with: String
   berita_not_ends_with: String
+  writtenBy: UserWhereInput
   AND: [BeritaWhereInput!]
   OR: [BeritaWhereInput!]
   NOT: [BeritaWhereInput!]
@@ -414,6 +418,7 @@ type Diskusi {
   createdAt: DateTime!
   judul: String!
   isi: String!
+  writtenBy: User!
 }
 
 type DiskusiConnection {
@@ -426,6 +431,7 @@ input DiskusiCreateInput {
   id: ID
   judul: String!
   isi: String!
+  writtenBy: UserCreateOneInput!
 }
 
 type DiskusiEdge {
@@ -472,6 +478,7 @@ input DiskusiSubscriptionWhereInput {
 input DiskusiUpdateInput {
   judul: String
   isi: String
+  writtenBy: UserUpdateOneRequiredInput
 }
 
 input DiskusiUpdateManyMutationInput {
@@ -530,6 +537,7 @@ input DiskusiWhereInput {
   isi_not_starts_with: String
   isi_ends_with: String
   isi_not_ends_with: String
+  writtenBy: UserWhereInput
   AND: [DiskusiWhereInput!]
   OR: [DiskusiWhereInput!]
   NOT: [DiskusiWhereInput!]

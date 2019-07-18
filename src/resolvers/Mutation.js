@@ -144,18 +144,21 @@ async function createDiskusi(parent, args, context, info) {
 		writtenBy: { connect: { id: userId } },
     })
 	*/
+	const userId = getUserId(context)
 	return context.db.mutation.createDiskusi({data:{
     judul: args.judul,
 	isi: args.isi,
+	writtenBy: { connect: { id: userId } }
     }}, info)
 }
 
 
 async function createBerita(parent, args, context, info) {
-   
+	const userId = getUserId(context)
 	return context.db.mutation.createBerita({data:{
     headline: args.headline,
 	berita: args.berita,
+	writtenBy: { connect: { id: userId } }
     }}, info)
 }
 

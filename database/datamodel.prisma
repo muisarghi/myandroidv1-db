@@ -20,6 +20,7 @@ type Diskusi {
   createdAt: DateTime! @createdAt
   judul: String!
   isi: String!
+  writtenBy: User!
 }
 
 type Berita {
@@ -27,6 +28,7 @@ type Berita {
   createdAt: DateTime! @createdAt
   headline: String!
   berita: String!
+  writtenBy: User!
 }
 
 type Lomba {
