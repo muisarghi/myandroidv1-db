@@ -79,6 +79,7 @@ type Mutation {
 
 type Query {
   user: User!
+  countLomba: [Lomba!]!
   getUser(email: String!, password: String!): [User]!
   getUserIdQuery: String!
   getAllLomba: [Lomba!]!

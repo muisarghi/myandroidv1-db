@@ -1,8 +1,19 @@
-
+const bcrypt = require('../../node_modules/bcryptjs')
+const jwt = require('../../node_modules/jsonwebtoken')
+const { APP_SECRET, getUserId } = require('./Utils')
 
 function getAllLomba(parent, args, context, info) {
     //return context.prisma.lombas()
-	return context.db.query.lombas({ }, info)
+	return context.db.query.lombas({ },  info)
+}
+
+function countLomba(parent, args, context, info) {
+	//const userId = getUserId(context)
+    //return context.prisma.lombas()
+	//return context.db.query.lombasConnection({ where:{user:{id: userId}}}, info)
+	//return context.db.query.lombasConnection({ }, info)
+	const agg = context.db.query.lombasConnection({}, '{aggregate {count}}', info);
+	return { agg }
 }
 
 function getLombaDesc(parent, args, context, info) {
@@ -77,5 +88,6 @@ module.exports = {
 	getAllBerita,
     getAllDiskusi,
 	searchUser,
-    getAllFile
+    getAllFile,
+	countLomba
 }
