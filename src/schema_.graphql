@@ -53,6 +53,7 @@ type Lomba {
   createdAt: String
   lomba: String
   ketlomba: String
+  writtenBy: User
 }
 
 enum LombaOrderByInput {

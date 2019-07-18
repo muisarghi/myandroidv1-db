@@ -1,5 +1,5 @@
 //const bcrypt = require('bcryptjs')
-
+//201907171553............... getschema (localhost) to ANdroid Studio
 //const { APP_SECRET, getUserId } = require('./Utils')
 const bcrypt = require('../../node_modules/bcryptjs')
 const jwt = require('../../node_modules/jsonwebtoken')
@@ -20,6 +20,8 @@ async function signup(parent, args, context, info) {
 
 async function login(parent, args, context, info) {
 	/*
+	 
+	  
 	return context.db.mutation.createLomba({data:{
     lomba: args.lomba,
 	ketlomba: args.ketlomba,
