@@ -1,6 +1,8 @@
+
 const bcrypt = require('../../node_modules/bcryptjs')
 const jwt = require('../../node_modules/jsonwebtoken')
 const { APP_SECRET, getUserId } = require('./Utils')
+
 
 function getAllLomba(parent, args, context, info) {
     //return context.prisma.lombas()
@@ -15,7 +17,7 @@ function countLomba(parent, args, context, info) {
 	const count = context.db.query.lombasConnection({ }, '{aggregate {count}}', info);
 	const countId = context.db.query.lombasConnection({ where:{user:{id: userId}} }, '{aggregate {count}}', info);
 	//return { agg }
-	return count, countId
+	return { count, countId }
 	
   
 }
