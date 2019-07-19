@@ -101,6 +101,13 @@ async function getUserIdQuery(parent, args, context, info) {
     return getUserId(context)
 }
 
+function getUserDetail(parent, args, context, info) {
+    const userId = getUserId(context)
+
+    //return context.prisma.user({ id: userId })
+	return context.db.query.users({ where:{id: userId} }, info)
+}
+
 //async function Authpayload ({ user: { userId } }, args, context, info)
 //{
   //  return context.db.query.users({ where: { userId } }, info)
@@ -109,6 +116,7 @@ async function getUserIdQuery(parent, args, context, info) {
 module.exports = {
 	user,
 	getUser,
+	getUserDetail,
 	getUserIdQuery,
     getAllLomba,
 	getLombaDesc,

@@ -90,6 +90,7 @@ type Query {
   countBerita: BeritaConnection
   countBeritaId: BeritaConnectionId
   getUser(email: String!, password: String!): [User]!
+  getUserDetail: [User]!
   getUserIdQuery: String!
   getAllLomba: [Lomba!]!
   getLombaDesc(orderBy: LombaOrderByInput): [Lomba]!
