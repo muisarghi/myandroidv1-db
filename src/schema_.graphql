@@ -88,6 +88,7 @@ type Query {
   countLomba: LombaConnection
   countLombaId: LombaConnectionId
   countBerita: BeritaConnection
+  countBeritaId: BeritaConnectionId
   getUser(email: String!, password: String!): [User]!
   getUserIdQuery: String!
   getAllLomba: [Lomba!]!
@@ -124,7 +125,15 @@ type BeritaConnection{
 
 type BeritaConnectionAggregate{
 	count: Int
-	countId: Int
+	
+}
+
+type BeritaConnectionId{
+	aggregate: BeritaConnectionAggregateId
+}
+
+type BeritaConnectionAggregateId{
+	count: Int
 }
 
 

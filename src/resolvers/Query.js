@@ -59,14 +59,20 @@ function getAllBerita(parent, args, context, info) {
 }
 
 function countBerita(parent, args, context, info) {
-	const userId = getUserId(context)
-    //return context.prisma.lombas()
-	//return context.db.query.lombasConnection({ where:{user:{id: userId}}}, info)
-	//return context.db.query.lombasConnection({ }, info)
+	//const userId = getUserId(context)
+    
 	const count = context.db.query.beritasConnection({ }, '{aggregate {count}}', info);
-	const countId = context.db.query.beritasConnection({ where:{writtenBy:{id: userId}} }, '{aggregate {count}}', info);
+	//const countId = context.db.query.beritasConnection({ where:{writtenBy:{id: userId}} }, '{aggregate {count}}', info);
 	//return { agg }
-	return { count, countId }
+	return count
+}
+
+function countBeritaId(parent, args, context, info) {
+	const userId = getUserId(context)
+	//const count = context.db.query.beritasConnection({ }, '{aggregate {count}}', info);
+	const count = context.db.query.beritasConnection({ where:{writtenBy:{id: userId}} }, '{aggregate {count}}', info);
+	//return { agg }
+	return count
 }
 
 

@@ -66,6 +66,18 @@
             "deprecationReason": null
           },
           {
+            "name": "countBeritaId",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "BeritaConnectionId",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "getUser",
             "description": "",
             "args": [
@@ -654,9 +666,43 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BeritaConnectionId",
+        "description": "",
+        "fields": [
           {
-            "name": "countId",
+            "name": "aggregate",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "BeritaConnectionAggregateId",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BeritaConnectionAggregateId",
+        "description": "",
+        "fields": [
+          {
+            "name": "count",
             "description": "",
             "args": [],
             "type": {
