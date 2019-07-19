@@ -100,5 +100,6 @@ module.exports = {
     getAllDiskusi,
 	searchUser,
     getAllFile,
-	countLomba
+	countLomba,
+	countLombaId
 }
