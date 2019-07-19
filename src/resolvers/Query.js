@@ -121,5 +121,6 @@ module.exports = {
     getAllFile,
 	countLomba,
 	countLombaId,
-	countBerita
+	countBerita,
+	countBeritaId
 }
