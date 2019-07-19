@@ -24,7 +24,7 @@ function countLombaId(parent, args, context, info) {
 	const userId = getUserId(context)
 	//const count = 100
 	//const count = context.db.query.lombasConnection({ }, '{aggregate {count}}', info);
-	const count = context.db.query.lombasConnection({ where:{user:{id: userId}} }, '{aggregate {count}}', info);
+	const count = context.db.query.lombasConnection({ where:{writtenBy:{id: userId}} }, '{aggregate {count}}', info);
 	return count
 }
 
