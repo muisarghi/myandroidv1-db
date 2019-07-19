@@ -58,6 +58,18 @@ function getAllBerita(parent, args, context, info) {
 	return context.db.query.beritas({ }, info)
 }
 
+function countBerita(parent, args, context, info) {
+	const userId = getUserId(context)
+    //return context.prisma.lombas()
+	//return context.db.query.lombasConnection({ where:{user:{id: userId}}}, info)
+	//return context.db.query.lombasConnection({ }, info)
+	const count = context.db.query.beritasConnection({ }, '{aggregate {count}}', info);
+	const countId = context.db.query.beritasConnection({ where:{writtenBy:{id: userId}} }, '{aggregate {count}}', info);
+	//return { agg }
+	return { count, countId }
+}
+
+
 function searchUser(parent, args, context, info) {
     //return context.prisma.diskusis()
 	return context.db.query.users({ where:{nama:args.searchNama}, orderBy: args.orderBy}, info)
@@ -102,5 +114,6 @@ module.exports = {
 	searchUser,
     getAllFile,
 	countLomba,
-	countLombaId
+	countLombaId,
+	countBerita
 }
