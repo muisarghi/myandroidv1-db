@@ -56,6 +56,7 @@ type Lomba {
   lomba: String
   ketlomba: String
   writtenBy: User
+  count: Int
 }
 
 enum LombaOrderByInput {
@@ -77,9 +78,14 @@ type Mutation {
   createFile(file: String!): File
 }
 
+type CLomba {
+count: Int
+aggregate: String
+}
+
 type Query {
   user: User!
-  countLomba: [Lomba!]!
+  countLomba: LombaConnection
   getUser(email: String!, password: String!): [User]!
   getUserIdQuery: String!
   getAllLomba: [Lomba!]!
@@ -92,6 +98,16 @@ type Query {
   getAllComment: [Comment]
   getAllFile: [File]
 }
+
+type LombaConnection{
+	aggregate: LombaConnectionAggregate
+}
+
+type LombaConnectionAggregate{
+	count: Int
+}
+
+
 
 type User {
   id: ID!

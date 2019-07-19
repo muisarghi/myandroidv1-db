@@ -12,9 +12,11 @@ function countLomba(parent, args, context, info) {
     //return context.prisma.lombas()
 	//return context.db.query.lombasConnection({ where:{user:{id: userId}}}, info)
 	//return context.db.query.lombasConnection({ }, info)
-	//const agg = context.db.query.lombasConnection({}, '{aggregate {count}}', info);
+	const count = context.db.query.lombasConnection({ }, '{aggregate {count}}', info);
 	//return { agg }
-	return context.db.query.lombasConnection({ },  info)
+	return count
+	
+  
 }
 
 function getLombaDesc(parent, args, context, info) {
